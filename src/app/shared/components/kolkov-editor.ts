@@ -17,19 +17,20 @@ export class TextEditor {
   @Input() width: string = ''
   @Input() content: string = ''
   @Input() showToolbar: boolean = true
-  showSave = true
-  config: any
+  public showSave = true
+  public config: any
 
   constructor(private el: ElementRef) {
   }
 
   ngOnInit(): void {
     let height = 250
+
     if (!this.showToolbar)
       height = height + 39
 
-
     this.setHeight(height)
+
     this.config = this.createConfig();
 
   }
@@ -79,7 +80,7 @@ export class TextEditor {
       uploadUrl: 'v1/image',
       uploadWithCredentials: false,
       toolbarPosition: 'bottom',
-      toolbarHiddenButtons: [       
+      toolbarHiddenButtons: [
         [
           // 'bold',
           //'italic',
@@ -88,7 +89,7 @@ export class TextEditor {
           'superscript',
           'toggleHtml',
           'htmlCode'
-        ],        
+        ],
         [
           //'justifyFull',
           'indent',
