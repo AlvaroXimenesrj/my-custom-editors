@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, Signal } from '@angular/core';
 import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor';
 import { Shared } from '../shared.module';
 
@@ -8,22 +8,26 @@ import { Shared } from '../shared.module';
     Shared,
     AngularEditorModule
   ],
-  templateUrl: './kolkov-editor.html',
-  styleUrl: './kolkov-editor.scss',
+  templateUrl: './kolkov-editor.component.html',
+  styleUrl: './kolkov-editor.component.scss',
 })
-export class TextEditor {
+export class KolkovEditorComponent {
 
   @Input() editable: boolean = true
   @Input() width: string = ''
   @Input() content: string = ''
   @Input() showToolbar: boolean = true
-  public showSave = true
+  @Input() title: string = 'Título'
+  @Output() saveContent: EventEmitter<any> = new EventEmitter<any>()
   public config: any
+  private originValue: string = ''
 
   constructor(private el: ElementRef) {
   }
 
   ngOnInit(): void {
+
+    this.originValue = this.content
     let height = 250
 
     if (!this.showToolbar)
@@ -37,6 +41,19 @@ export class TextEditor {
 
   setHeight(px: number) {
     this.el.nativeElement.style.setProperty('--editor-height', px + 'px');
+  }
+
+  cancel() {
+    this.content = this.originValue
+  }
+
+  salvar() {
+    this.originValue = this.content
+    this.saveContent.emit(this.content)
+  }
+
+  get showSave() {
+    return this.content != this.originValue
   }
 
   createConfig(): AngularEditorConfig {

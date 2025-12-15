@@ -1,7 +1,7 @@
 <div class="kolkov-container" 
      [style.width]="width">
 
-    <div class="kolkov-title">Título</div>
+    <div class="kolkov-title">{{ title }}</div>
 
     <div class="kolkov-sector">
 
@@ -14,19 +14,22 @@
 
                 <div class="kolkov-buttons">
 
+                    @if(showSave){
                     <button nz-button 
                             nzType="default"            
                             class="cancel-button" 
                             [style.position]="showSave ? '' : 'absolute'" 
-                            [style.right]="showSave ? '' : 0">
+                            [style.right]="showSave ? '' : 0"
+                            (click)="cancel()">
                             Cancelar
                     </button>
 
-                    @if(showSave){
+                    
 
                     <button nz-button 
                             nzType="primary"
-                            class="save-button">
+                            class="save-button"
+                            (click)="salvar()">
 
                         <div class="spinner-wrapper">
                             Salvar

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TextEditor } from './shared/components/kolkov-editor';
+import { KolkovEditorComponent } from './shared/components/kolkov-editor.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TextEditor],
+  imports: [RouterOutlet, KolkovEditorComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
