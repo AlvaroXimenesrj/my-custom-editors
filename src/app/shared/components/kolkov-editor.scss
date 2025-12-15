@@ -1,0 +1,57 @@
+:host {
+  --editor-height: 250px;
+}
+
+.kolkov-container {
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  padding-right: 3px;
+  padding-top: 2px;
+  min-width: 662px
+}
+
+.kolkov-title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.kolkov-sector {
+  border: 1px solid rgb(200, 197, 197);
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding-bottom: 3px;
+  padding-right: 2px;
+}
+
+.kolkov-buttons {
+  width: 160px;
+  margin-left: auto;
+  position: relative;
+  right: 0;
+}
+
+.cancel-button {
+  width: 85px;
+  height: 100%;
+  position: absolute;
+  right: 20;
+}
+
+.save-button {
+  width: 70px;
+  height: 100%;
+  margin-left: 3px;
+  position: absolute;
+  right: 0
+}
+
+:host ::ng-deep .kolkov-editor .angular-editor-textarea {
+  resize: none !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: var(--editor-height) !important;
+  display: flex;
+
+}

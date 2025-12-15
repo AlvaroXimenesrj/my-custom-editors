@@ -1,0 +1,44 @@
+<div class="kolkov-container" 
+     [style.width]="width">
+
+    <div class="kolkov-title">Título</div>
+
+    <div class="kolkov-sector">
+
+        <angular-editor class="kolkov-editor" 
+                        [placeholder]="'Enter text here...'" 
+                        [(ngModel)]="content"
+                        [config]="config">
+
+            <ng-template #customButtons>
+
+                <div class="kolkov-buttons">
+
+                    <button nz-button 
+                            nzType="default"            
+                            class="cancel-button" 
+                            [style.position]="showSave ? '' : 'absolute'" 
+                            [style.right]="showSave ? '' : 0">
+                            Cancelar
+                    </button>
+
+                    @if(showSave){
+
+                    <button nz-button 
+                            nzType="primary"
+                            class="save-button">
+
+                        <div class="spinner-wrapper">
+                            Salvar
+                        </div>
+
+                    </button>
+                    }
+
+                </div>
+
+            </ng-template>
+
+        </angular-editor>
+    </div>
+</div>
